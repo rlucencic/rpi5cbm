@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 /*
- * The Commodore ROMs: files in the data folder's roms/ (emu_rom_read()),
+ * The Commodore ROMs: files in the machine's roms/ folder (emu_rom_read()),
  * named as esp32cbm's: c64basic.rom ... 1571.rom.
  */
 typedef enum {

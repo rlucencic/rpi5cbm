@@ -12,7 +12,7 @@ and tests are esp32cbm's CLAUDE.md; this project is the glue.
 |---|---|
 | `src/main.c` | The Commodore as an `emu_machine_t`: esp32cbm's `main/main.c` through `../rpi5emu/tools/port_glue.py` and `port_finish.py` |
 | `src/settings.c` | esp32cbm's, over `emu/nvs.h` (section `cbm`: `model`, `joystick`) |
-| `src/rom_store.c` | `~/rpi5emu/roms/` through `emu_rom_read()`: c64basic.rom ... 1571.rom |
+| `src/rom_store.c` | `~/rpi5emu/cbm/roms/` through `emu_rom_read()`: c64basic.rom ... 1571.rom |
 
 Keep `src/main.c` in step with esp32cbm's `main/main.c`.
 

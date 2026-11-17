@@ -128,7 +128,7 @@ cmake -S . -B build -G Ninja && cmake --build build
 
 ### 3. ROMs
 
-In the data folder's `roms/` (`~/rpi5emu/roms`), named as esp32cbm's:
+In the data folder's `cbm/roms/` (`~/rpi5emu/cbm/roms`), named as esp32cbm's:
 `c64basic.rom`, `c64kernal.rom`, `c64chargen.rom`, `1541.rom`; for the
 C128 `c128basic.rom`, `c128kernal.rom`, `c128chargen.rom`, `c128c64.rom`,
 `1571.rom`. Not part of this repository.
@@ -192,7 +192,7 @@ flowchart LR
   EMU -- picture --> WIN
   EMU -- sound --> SND[SDL audio]
   WIN -- keys · mouse --> EMU
-  DATA[("~/rpi5emu<br>roms · cbm")]
+  DATA[("~/rpi5emu<br>cbm · cbm/roms")]
   EMU <--> DATA
   WEB <--> DATA
 ```
