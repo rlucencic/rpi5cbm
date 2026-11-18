@@ -1,13 +1,14 @@
-<h1 align="center">rpi5cbm</h1>
+<h1 align="center">sdlcbm</h1>
 
 <p align="center">
-  <b>A Commodore 64 or 128 on the Raspberry Pi 5, in a window of its own.</b><br>
+  <b>A Commodore 64 or 128 in an SDL 3 window on Linux or macOS.</b><br>
   Cycle-exact 6510 and CIAs, VIC-II, SID, real 1541 and 1571 drives, the C128's 80 columns, FAST mode and CP/M.
 </p>
 
 <p align="center">
   <img alt="Raspberry Pi 5" src="https://img.shields.io/badge/Raspberry%20Pi-5-c51a4a">
-  <img alt="Linux arm64" src="https://img.shields.io/badge/Linux-arm64-333">
+  <img alt="Linux arm64 and amd64" src="https://img.shields.io/badge/Linux-arm64%20%7C%20amd64-333">
+  <img alt="macOS arm64" src="https://img.shields.io/badge/macOS-arm64-333">
   <img alt="SDL 3" src="https://img.shields.io/badge/SDL-3-1d4ed8">
   <img alt="CPUs" src="https://img.shields.io/badge/CPU-6510%20%C2%B7%208502%20%C2%B7%20Z80-555">
   <img alt="MIT licence" src="https://img.shields.io/badge/licence-MIT-green">
@@ -25,28 +26,27 @@
   <sub>The C64 saving a program through its 1541 and listing the directory, and the C128's BASIC 7.0, on the Pi.</sub>
 </p>
 
-rpi5cbm runs [esp32cbm](https://github.com/rlucencic/esp32cbm)'s Commodore on a Raspberry Pi 5 with
-64-bit Linux, in a window of its own (X11 or Wayland, through SDL 3). The machine is the
+sdlcbm runs [esp32cbm](https://github.com/rlucencic/esp32cbm)'s Commodore on 64-bit Linux (arm64 and amd64) and Apple Silicon macOS. SDL 3 provides the window, sound and input. The machine is the
 same code as on the ESP32 boards: esp32cbm's platform-independent core and
 [esp32emu](https://github.com/rlucencic/esp32emu)'s CPU core, on
-[rpi5emu](https://github.com/rlucencic/rpi5emu), the family's Linux runtime: a setup
-screen in the window, sound, the Pi's keyboard and mouse, a web page on your network and a
+[sdlemu](https://github.com/rlucencic/sdlemu), the family's desktop runtime: a setup
+screen in the window, sound, the host's keyboard and mouse, a web page on your network and a
 console.
 
-It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
-[rpi5zx](https://github.com/rlucencic/rpi5zx) (ZX Spectrum),
-[rpi5cpc](https://github.com/rlucencic/rpi5cpc) (Amstrad CPC),
-[rpi5coco](https://github.com/rlucencic/rpi5coco) (Tandy Color Computer 2 and 3),
-[rpi5gs](https://github.com/rlucencic/rpi5gs) (Apple IIGS),
-[rpi5msx](https://github.com/rlucencic/rpi5msx) (MSX1 and MSX2),
-[rpi5xl](https://github.com/rlucencic/rpi5xl) (Atari 800XL and 130XE),
-[rpi5ste](https://github.com/rlucencic/rpi5ste) (Atari STE),
-[rpi5pc](https://github.com/rlucencic/rpi5pc) (IBM PC/XT and PC/AT),
-[rpi5mac](https://github.com/rlucencic/rpi5mac) (Macintosh Plus, SE, Classic),
-[rpi5mac2](https://github.com/rlucencic/rpi5mac2) (Macintosh LC and II),
-[rpi5mac3](https://github.com/rlucencic/rpi5mac3) (Macintosh LC II and LC III),
-[rpi5arc](https://github.com/rlucencic/rpi5arc) (Acorn Archimedes),
-[rpi5ami](https://github.com/rlucencic/rpi5ami) (Amiga 500, 2000, 600, 1200).
+It belongs to the SDL desktop family of the ESP32 emulators:
+[sdlzx](https://github.com/rlucencic/sdlzx) (ZX Spectrum),
+[sdlcpc](https://github.com/rlucencic/sdlcpc) (Amstrad CPC),
+[sdlcoco](https://github.com/rlucencic/sdlcoco) (Tandy Color Computer 2 and 3),
+[sdlgs](https://github.com/rlucencic/sdlgs) (Apple IIGS),
+[sdlmsx](https://github.com/rlucencic/sdlmsx) (MSX1 and MSX2),
+[sdlxl](https://github.com/rlucencic/sdlxl) (Atari 800XL and 130XE),
+[sdlste](https://github.com/rlucencic/sdlste) (Atari STE),
+[sdlpc](https://github.com/rlucencic/sdlpc) (IBM PC/XT and PC/AT),
+[sdlmac](https://github.com/rlucencic/sdlmac) (Macintosh Plus, SE, Classic),
+[sdlmac2](https://github.com/rlucencic/sdlmac2) (Macintosh LC and II),
+[sdlmac3](https://github.com/rlucencic/sdlmac3) (Macintosh LC II and LC III),
+[sdlarc](https://github.com/rlucencic/sdlarc) (Acorn Archimedes),
+[sdlami](https://github.com/rlucencic/sdlami) (Amiga 500, 2000, 600, 1200).
 
 ## Features
 
@@ -108,11 +108,8 @@ It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
 
 ### 1. What you need
 
-- A Raspberry Pi 5 with 64-bit Linux (developed on Ubuntu 26.04; any Linux with SDL 3.2 or
-  later should do)
-- The tools and libraries:
-  `sudo apt install build-essential cmake ninja-build pkg-config libsdl3-dev libsdl3-ttf-dev libpng-dev`
-- [esp32emu](https://github.com/rlucencic/esp32emu), [rpi5emu](https://github.com/rlucencic/rpi5emu)
+- 64-bit Linux (including Raspberry Pi 5) or Apple Silicon macOS with SDL 3.2 or newer. See [desktop build dependencies](https://github.com/rlucencic/sdlemu#building).
+- [esp32emu](https://github.com/rlucencic/esp32emu), [sdlemu](https://github.com/rlucencic/sdlemu)
   and [esp32cbm](https://github.com/rlucencic/esp32cbm), cloned next to this project
 - The ROMs (below)
 
@@ -120,24 +117,24 @@ It's one of the rpi5 family, the Raspberry Pi versions of the esp32 emulators:
 
 ```sh
 git clone https://github.com/rlucencic/esp32emu.git
-git clone https://github.com/rlucencic/rpi5emu.git
+git clone https://github.com/rlucencic/sdlemu.git
 git clone https://github.com/rlucencic/esp32cbm.git
-git clone https://github.com/rlucencic/rpi5cbm.git && cd rpi5cbm
+git clone https://github.com/rlucencic/sdlcbm.git && cd sdlcbm
 cmake -S . -B build -G Ninja && cmake --build build
 ```
 
 ### 3. ROMs
 
-In the data folder's `cbm/roms/` (`~/rpi5emu/cbm/roms`), named as esp32cbm's:
+In the data folder's `cbm/roms/` (`~/sdlemu/cbm/roms`), named as esp32cbm's:
 `c64basic.rom`, `c64kernal.rom`, `c64chargen.rom`, `1541.rom`; for the
 C128 `c128basic.rom`, `c128kernal.rom`, `c128chargen.rom`, `c128c64.rom`,
 `1571.rom`. Not part of this repository.
 
 ### 4. First start
 
-1. `build/rpi5cbm`: the setup screen opens in a window.
+1. `build/sdlcbm`: the setup screen opens in a window.
 2. Choose the model and click **Start**.
-3. Put images into `~/rpi5emu/cbm/`, drop them on the window or the web page, and
+3. Put images into `~/sdlemu/cbm/`, drop them on the window or the web page, and
    insert them on the setup screen's **Disks** page.
 
 ## Using it
@@ -148,9 +145,9 @@ C128 `c128basic.rom`, `c128kernal.rom`, `c128chargen.rom`, `c128c64.rom`,
 | Full screen | Ctrl+Alt+F |
 | Give the mouse to the machine, take it back | A click in the window; Ctrl+Alt+G |
 | Run as fast as it goes (warp) | Ctrl+Alt+W, again for real speed |
-| Take a screenshot | Ctrl+Alt+S (into `~/rpi5emu/screenshots`), or the console's `s` |
-| Insert an image | The setup screen's **Disks** page, drop it on the window or the web page, or name it on the command line: `build/rpi5cbm game.d64` |
-| Start straight into the machine | `build/rpi5cbm -S`, with the setup screen's rows as `--choice`: `build/rpi5cbm -S --choice Model=C128` |
+| Take a screenshot | Ctrl+Alt+S (into `~/sdlemu/screenshots`), or the console's `s` |
+| Insert an image | The setup screen's **Disks** page, drop it on the window or the web page, or name it on the command line: `build/sdlcbm game.d64` |
+| Start straight into the machine | `build/sdlcbm -S`, with the setup screen's rows as `--choice`: `build/sdlcbm -S --choice Model=C128` |
 | Show the window on another computer | Log in with `ssh -C -Y <the Pi>` and start it there: fine for still pictures; games want the Pi's own monitor |
 | Load from a disk | Insert it into **8:**, then `LOAD "$",8` and `LIST` for the directory, `LOAD "NAME",8,1` and `RUN`; on the C128 `DIRECTORY` and `RUN "NAME"` |
 | Run a program file | Insert the `.PRG`/`.T64` into **Program**: it's loaded and RUN (and again at every start) |
@@ -158,8 +155,8 @@ C128 `c128basic.rom`, `c128kernal.rom`, `c128chargen.rom`, `c128c64.rom`,
 | The C128's 80 columns | **40/80 DISPLAY** (Print Screen) shows the 80-column screen while it's down; down at a reset, the C128 starts there |
 | CP/M | Insert the C128 CP/M system disk into 8: and reset the C128 |
 
-Images live in `~/rpi5emu/cbm/`, settings in `~/.config/rpi5emu/settings.ini`; the
-inserted images are remembered across starts. `build/rpi5cbm --help` lists the options.
+Images live in `~/sdlemu/cbm/`, settings in `~/.config/sdlemu/settings.ini`; the
+inserted images are remembered across starts. `build/sdlcbm --help` lists the options.
 
 **Keyboard**, by position as VICE maps a PC keyboard: the C64's keys where
 a PC has them (`` ` `` is ←, `-` is +, `=` is −, `[` is @, `]` is \*, `;` is :,
@@ -192,7 +189,7 @@ flowchart LR
   EMU -- picture --> WIN
   EMU -- sound --> SND[SDL audio]
   WIN -- keys · mouse --> EMU
-  DATA[("~/rpi5emu<br>cbm · cbm/roms")]
+  DATA[("~/sdlemu<br>cbm · cbm/roms")]
   EMU <--> DATA
   WEB <--> DATA
 ```
@@ -201,17 +198,17 @@ flowchart LR
   platform independent: the same code runs on the ESP32 boards.
 - **`src/`**: the glue, esp32cbm's `main/main.c` ported: memory, ROMs, settings, keyboard map,
   drives and status.
-- **[rpi5emu](https://github.com/rlucencic/rpi5emu)**: the window, the setup screen, sound,
+- **[sdlemu](https://github.com/rlucencic/sdlemu)**: the window, the setup screen, sound,
   input, the web page, the console, the data folder and the settings.
 - **[esp32emu](https://github.com/rlucencic/esp32emu)**: the CPU core (6510 · 8502 · Z80).
 
 ## Development
 
 ```sh
-../rpi5emu/tools/pi.sh rpi5cbm build        # from another computer: sync to the Pi, build there
-../rpi5emu/tools/pi.sh rpi5cbm run          # its window on this computer (ssh -C -Y)
-../rpi5emu/tools/pi.sh rpi5cbm headless     # no window: drive it through the console
-../rpi5emu/tools/console.sh i 's /tmp/shot.png'
+../sdlemu/tools/pi.sh sdlcbm build        # from another computer: sync to the Pi, build there
+../sdlemu/tools/pi.sh sdlcbm run          # its window on this computer (ssh -C -Y)
+../sdlemu/tools/pi.sh sdlcbm headless     # no window: drive it through the console
+../sdlemu/tools/console.sh i 's /tmp/shot.png'
 ```
 
 `CLAUDE.md` has the details: the layout, how it was ported, the checks; esp32cbm's own

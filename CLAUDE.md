@@ -1,7 +1,7 @@
-# rpi5cbm: the Commodore 64 and 128 on the Raspberry Pi 5
+# sdlcbm: the Commodore 64 and 128 on Linux and macOS through SDL 3
 
 esp32cbm's Commodore (`../esp32cbm/components/cbm`, platform independent)
-on the rpi5emu runtime (`../rpi5emu`, its CLAUDE.md: the workflow, the Pi,
+on the sdlemu runtime (`../sdlemu`, its CLAUDE.md: the workflow, the Pi,
 the lessons), the 6502 and the C128's Z80 (`CONFIG_Z80_TIMING_TSTATES`,
 `CONFIG_Z80_READ_SPECIAL`) esp32emu's. The machine's own behaviour, lessons
 and tests are esp32cbm's CLAUDE.md; this project is the glue.
@@ -10,19 +10,19 @@ and tests are esp32cbm's CLAUDE.md; this project is the glue.
 
 | Path | What |
 |---|---|
-| `src/main.c` | The Commodore as an `emu_machine_t`: esp32cbm's `main/main.c` through `../rpi5emu/tools/port_glue.py` and `port_finish.py` |
+| `src/main.c` | The Commodore as an `emu_machine_t`: esp32cbm's `main/main.c` through `../sdlemu/tools/port_glue.py` and `port_finish.py` |
 | `src/settings.c` | esp32cbm's, over `emu/nvs.h` (section `cbm`: `model`, `joystick`) |
-| `src/rom_store.c` | `~/rpi5emu/cbm/roms/` through `emu_rom_read()`: c64basic.rom ... 1571.rom |
+| `src/rom_store.c` | `~/sdlemu/cbm/roms/` through `emu_rom_read()`: c64basic.rom ... 1571.rom |
 
 Keep `src/main.c` in step with esp32cbm's `main/main.c`.
 
 ## Build, run, check
 
 ```sh
-../rpi5emu/tools/pi.sh rpi5cbm build
-../rpi5emu/tools/pi.sh rpi5cbm headless     # or run: the window here
-../rpi5emu/tools/console.sh i 'T load "$",8\n'
-../rpi5emu/tools/pi.sh rpi5cbm shot out.png
+../sdlemu/tools/pi.sh sdlcbm build
+../sdlemu/tools/pi.sh sdlcbm headless     # or run: the window here
+../sdlemu/tools/console.sh i 'T load "$",8\n'
+../sdlemu/tools/pi.sh sdlcbm shot out.png
 ```
 
 Console: the runtime's (`h`) and esp32cbm's: `k <n>` tap key n (row * 8 +

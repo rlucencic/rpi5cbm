@@ -1,8 +1,8 @@
 /*
- * Commodore 64 and 128 emulator on the Raspberry Pi 5.
+ * Commodore 64 and 128 emulator with SDL 3.
  *
  * The Pi's side (window, sound, keyboard, setup screen, web page, console,
- * settings, the data folder) is the shared runtime in ../rpi5emu, the
+ * settings, the data folder) is the shared runtime in ../sdlemu, the
  * machine esp32cbm's; this file plugs the Commodore into it, as
  * esp32cbm's main/main.c does on the boards (and mostly is that file):
  * memory, ROMs, settings, keyboard map, joystick, drives 8 and 9, the
